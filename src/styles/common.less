@@ -1,8 +1,34 @@
 @import "./var.less";
-#app .hover-shadow{
-  transition: all .5s;
-  &:hover{
-    color: #fff;
-    text-shadow: 0 0 5px #fff;
+#app {
+  .hover-shadow{
+    transition: all .5s;
+    &:hover{
+      color: #fff;
+      text-shadow: 0 0 5px #fff;
+    }
   }
+  a{
+    color: @themeColor;
+  }
+  .ellipsis{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+.left{
+  float: left;
+}
+.right{
+  float: right;
+}
+// 清除浮动
+.clearfix {
+	zoom: 1;
+	&::after {
+		content: '';
+		display: block;
+		clear: both;
+		opacity: 0;
+	}
 }

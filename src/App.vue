@@ -2,15 +2,18 @@
   <div id="app">
     <page-header></page-header>
     <router-view class="content-container"></router-view>
+    <page-bottom></page-bottom>
   </div>
 </template>
 
 <script>
 import PageHeader from '@/components/PageHeader'
+import PageBottom from '@/components/PageBottom'
 export default {
   name: 'app',
   components: {
-    PageHeader
+    PageHeader,
+    PageBottom
   }
 }
 </script>
@@ -19,9 +22,7 @@ export default {
   #app{
     .content-container{
       width: 10rem;
-      height: 500px;
       margin: auto;
-      background: orange;
     }
     @media screen and (min-width: 540px) {
       .content-container{

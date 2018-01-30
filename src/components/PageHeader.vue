@@ -1,5 +1,5 @@
 <template lang="html">
-  <header id="m-pageheader">
+  <section id="m-pageheader">
     <blur :blur-amount=20 :url="$config.avatar" class="bg-avatar" v-if="$config.avatarBg"></blur>
     <div class="bg" v-else :style="{backgroundImage: `url(${$config.bgUrl || 'http://img3.iqilu.com/data/attachment/forum/201308/21/163544r6f4ftsysyldsiz6.jpg'})`}"></div>
     <vue-particles
@@ -23,7 +23,7 @@
          <li><router-link to="/contact" class="hover-shadow">联系我</router-link></li>
        </ul>
      </div>
-  </header>
+  </section>
 </template>
 
 <script>
@@ -112,16 +112,15 @@ export default {
     .nav{
       display: flex;
       width: 100%;
-      min-width: 200px;
-      max-width: 900px;
+      max-width: 800px;
       margin: 0 auto;
-      justify-content: space-around;
+      justify-content: space-between;
       li{
         flex: 1;
         a{
           display: block;
           padding: 5px 0;
-          font-size: @fs-14;
+          font-size: @fs-12;
           color: @themeColor;
           text-shadow: 0 0 5px @themeColor;
           &.active{
