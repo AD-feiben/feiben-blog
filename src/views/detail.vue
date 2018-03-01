@@ -1,5 +1,6 @@
 <template lang="html">
   <div id="detail">
+    <reward></reward>
     <div id="comment-wrap">
       <!-- 来必力City版安装代码 -->
       <div id="lv-container" data-id="city" :data-uid="$config.dataUid">
@@ -10,7 +11,11 @@
 </template>
 
 <script>
+import Reward from '@/components/Reward'
 export default {
+  components: {
+    Reward
+  },
   mounted () {
     /* eslint-disable */
     (function(d, s) {

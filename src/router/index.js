@@ -34,12 +34,12 @@ export default new Router({
     {
       path: '/contact',
       name: 'contact',
-      component: resolve => { require(['@/views/home'], resolve) }
+      component: resolve => { require(['@/views/contact'], resolve) }
     },
     {
       path: '/detail/:id',
       name: 'detail',
-      component: resolve => { require(['@/components/Detail'], resolve) }
+      component: resolve => { require(['@/views/detail'], resolve) }
     }
   ]
 })

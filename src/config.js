@@ -14,7 +14,7 @@ export default {
   // 粒子
   particles: true,
   // 文章列表分割线
-  divider: '👽👽👽',
+  divider: '💀💀💀',
 
   // 来必力评论系统
   dataUid: 'MTAyMC8zNDQ1My8xMDk5MA==',
@@ -27,7 +27,16 @@ export default {
       link: 'http://isfeiben.com'
     }
   ],
+  // 网站备案信息
   record: '粤ICP备17030214号',
+  // 社交账号 -- url
+  social: {
+    // wechat 为 二维码图片地址
+    wechat: 'https://upload.jianshu.io/users/qrcodes/1917079/%E5%85%AC%E5%8F%B7%E4%BA%8C%E7%BB%B4%E7%A0%81.png?imageMogr2/auto-orient/strip|imageView2/1/w/320/h/320',
+    github: 'https://github.com/AD-feiben',
+    weibo: '',
+    jianshu: 'https://www.jianshu.com/u/ccb05861b473'
+  },
   // 赞赏提示信息
   reward: '如果觉得我的文章对您有用，请随意赞赏。您的支持将鼓励我继续创作！',
   // 微信收款二维码
