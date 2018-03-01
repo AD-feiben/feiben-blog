@@ -3,7 +3,10 @@
     <p class="m-bottom-top">
       <span v-if="$config.author">{{$config.author}}</span>
       <x-icon v-if="$config.author && $config.since" type="ios-heart" size="14"></x-icon>
-      <span v-if="$config.since">{{$config.since}}<span v-if="$config.since !== currentYear"> ~ {{currentYear}}</span></span>
+      <span v-if="$config.since">
+        {{$config.since}}
+        <span v-if="$config.since !== currentYear">~ {{currentYear}}</span>
+      </span>
     </p>
     <p class="m-copyright">Powered By <a href="https://github.com/AD-feiben">Feiben</a></p>
     <div class="m-links" v-if="$config.friendLinks.length">
@@ -12,6 +15,7 @@
         <a :href="item.link" target="_blank">{{item.name}}</a>
       </span>
     </div>
+    <p class="record" v-if="$config.record">{{$config.record}}</p>
   </footer>
 </template>
 
@@ -52,6 +56,10 @@ export default {
         display: inline-block;
         color: @info;
       }
+    }
+    .record{
+      margin-top: 10px;
+      font-size: @fs-10;
     }
   }
 </style>

@@ -5,6 +5,7 @@ Vue.use(Router)
 
 export default new Router({
   linkActiveClass: 'active',
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -34,6 +35,11 @@ export default new Router({
       path: '/contact',
       name: 'contact',
       component: resolve => { require(['@/views/home'], resolve) }
+    },
+    {
+      path: '/detail/:id',
+      name: 'detail',
+      component: resolve => { require(['@/components/Detail'], resolve) }
     }
   ]
 })

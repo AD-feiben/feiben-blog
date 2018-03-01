@@ -16,6 +16,8 @@ export default {
   // 文章列表分割线
   divider: '👽👽👽',
 
+  // 来必力评论系统
+  dataUid: 'MTAyMC8zNDQ1My8xMDk5MA==',
   // 网站起始年份
   since: '2015',
   // 友情链接
@@ -25,6 +27,7 @@ export default {
       link: 'http://isfeiben.com'
     }
   ],
+  record: '粤ICP备17030214号',
   // 赞赏提示信息
   reward: '如果觉得我的文章对您有用，请随意赞赏。您的支持将鼓励我继续创作！',
   // 微信收款二维码
