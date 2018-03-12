@@ -10,8 +10,12 @@ import VueRouter from 'vue-router'
 import App from './App'
 import VueParticles from 'vue-particles'
 import config from './config'
+import '@/api'
+import { ToastPlugin } from 'vux'
+
 Vue.prototype.$config = config
 Vue.use(VueRouter)
+Vue.use(ToastPlugin)
 
 FastClick.attach(document.body)
 Vue.use(VueParticles)

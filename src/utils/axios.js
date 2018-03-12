@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import axios from 'axios'
-import { querystring } from 'vux'
+import { querystring, LoadingPlugin } from 'vux'
 import { baseURL } from '@/config/env'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
+Vue.use(LoadingPlugin)
 const myAxios = axios.create({
   baseURL
 })
@@ -16,7 +17,9 @@ const XHR = ({ loading = false }) => {
     })
   }
   // 公共参数
-  const parameter = {}
+  const parameter = {
+    state: 1
+  }
 
   // 无 loading 请求回调
   const sucFunN = res => {
@@ -48,7 +51,7 @@ const getData = ({ method = 'post', url = '', data = {}, loading = false }) => {
   let { parameter, sucFun, errFun } = XHR({ loading })
   let params = {...parameter, ...data}
   if (method.toLowerCase() === 'get') {
-    return myAxios.get(url, params).then(sucFun).catch(errFun)
+    return myAxios.get(url, {params}).then(sucFun).catch(errFun)
   } else if (method.toLowerCase() === 'post') {
     return myAxios.post(url, querystring.stringify(params)).then(sucFun).catch(errFun)
   }

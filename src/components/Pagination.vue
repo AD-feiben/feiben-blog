@@ -21,7 +21,7 @@ export default {
       return this.currentIndex === this.pageNum
     },
     pageNum () {
-      return Math.ceil(this.totalNumber / this.pageSize)
+      return Math.ceil(this.total / this.pageSize)
     }
   },
   props: {
@@ -41,7 +41,6 @@ export default {
   data () {
     return {
       currentIndex: this.current,
-      totalNumber: this.total,
       pageSize: this.size
     }
   },

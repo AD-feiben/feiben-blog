@@ -19,17 +19,17 @@ export default new Router({
     {
       path: '/categories',
       name: 'categories',
-      component: resolve => { require(['@/views/home'], resolve) }
+      component: resolve => { require(['@/views/category'], resolve) }
     },
     {
       path: '/tags',
       name: 'tags',
-      component: resolve => { require(['@/views/home'], resolve) }
+      component: resolve => { require(['@/views/tag'], resolve) }
     },
     {
       path: '/archives',
       name: 'archives',
-      component: resolve => { require(['@/views/home'], resolve) }
+      component: resolve => { require(['@/views/archive'], resolve) }
     },
     {
       path: '/contact',

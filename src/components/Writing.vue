@@ -1,17 +1,31 @@
 <template lang="html">
   <ul id="m-writing">
     <li v-for="item in list" :key="item.id" class="m-writing-item">
-      <router-link :to="{path: `detail/${item.id}`}">
-        <div class="m-writing-text" :class="{noImg: !item.coverImg}">
+      <router-link :to="{path: `detail/${item._id}`}">
+        <div class="m-writing-text" :class="{noImg: !item.cover}">
           <h3 class="m-writing-title" :title="item.title">
             <span>{{item.title}}</span>
           </h3>
           <p class="m-writing-publishTime">
-            <span>{{item.publishTime}}</span>
+            <span>{{item.publishedDate}}</span>
+            <span class="readingQuantity" v-if="item.readingQuantity">
+              <i class="fas fa-eye"></i>
+              {{item.readingQuantity}}
+            </span>
           </p>
-          <p class="m-writing-abstract">{{item.abstract}}</p>
+          <p class="m-writing-abstract">{{item.desc}}</p>
+          <span class="m-writing-tags" v-if="item.tags">
+            <i class="fas fa-tags"></i>
+            <span class="tag-item" v-for="(tag, index) in item.tags.split(',')" :key="index">{{tag}}</span>
+          </span>
+          <span
+            class="m-writing-classify"
+            v-if="item.classify"
+            <i class="fas fa-folder"></i>
+            {{item.classify}}
+          </span>
         </div>
-        <img v-if="item.coverImg" :src="item.coverImg" class="m-cover-img">
+        <img v-if="item.cover" :src="item.cover" class="m-cover-img">
         <divider class="m-writing-divider">{{$config.divider}}</divider>
       </router-link>
     </li>
@@ -24,24 +38,10 @@ export default {
   components: {
     Divider
   },
-  data () {
-    return {
-      list: [
-        {
-          id: 1,
-          title: '标题',
-          abstract: '摘要',
-          coverImg: '',
-          publishTime: '2018-1-29 14:00:00'
-        },
-        {
-          id: 2,
-          title: '标题',
-          abstract: '摘要',
-          coverImg: 'http://szzjimg-1253796326.picgz.myqcloud.com/szajimgs/1517206877028.jpg',
-          publishTime: '2018-1-29 14:00:00'
-        }
-      ]
+  props: {
+    list: {
+      type: Array,
+      required: true
     }
   }
 }
@@ -50,9 +50,6 @@ export default {
 <style lang="less">
   @import '../styles/var.less';
   #m-writing{
-    padding: 20px;
-    max-width: 700px;
-    margin: auto;
     font-size: @fs-12;
     .m-writing-text{
       padding-right: 110px;
@@ -60,13 +57,14 @@ export default {
       color: @themeColor;
       &.noImg{
         padding-right: 0;
+        min-height: 0;
       }
     }
     .m-writing-title{
       overflow : hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      font-size: @fs-16;
+      font-size: @fs-14;
       color: @themeColor;
       span{
         position: relative;
@@ -91,15 +89,36 @@ export default {
     .m-writing-publishTime{
       line-height: 2;
       color: @lightBlack;
+      font-size: @fs-10;
+      .readingQuantity{
+        margin-left: 10px;
+      }
     }
     .m-writing-abstract{
       overflow : hidden;
       text-overflow: ellipsis;
       display: -webkit-box;
+      margin-bottom: 5px;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
-      font-size: @fs-14;
+      font-size: @fs-12;
       color: @abstractColor;
+    }
+    .m-writing-classify, .m-writing-tags{
+      font-size: @fs-10;
+      color: @themeColor;
+    }
+    .m-writing-tags{
+      margin-right: 10px;
+      .tag-item{
+        padding: 0 2px;
+        border: 1px solid @themeColor;
+        border-radius: 2px;
+        box-sizing: border-box;
+        &+.tag-item{
+          margin-left: 5px;
+        }
+      }
     }
     .m-cover-img{
       position: absolute;

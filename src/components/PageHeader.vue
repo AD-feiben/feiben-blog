@@ -16,11 +16,11 @@
      <p class="description-wrap"><span class="description hover-shadow">{{$config.description}}</span></p>
      <div class="nav-wrap">
        <ul class="nav">
-         <li><router-link to="/home" class="hover-shadow">首页</router-link></li>
-         <li><router-link to="/categories" class="hover-shadow">分类</router-link></li>
-         <li><router-link to="/tags" class="hover-shadow">标签</router-link></li>
-         <li><router-link to="/archives" class="hover-shadow">归档</router-link></li>
-         <li><router-link to="/contact" class="hover-shadow">联系我</router-link></li>
+         <li><router-link to="/home" class="hover-shadow" replace>首页</router-link></li>
+         <li><router-link to="/categories" class="hover-shadow" replace>分类</router-link></li>
+         <li><router-link to="/tags" class="hover-shadow" replace>标签</router-link></li>
+         <li><router-link to="/archives" class="hover-shadow" replace>归档</router-link></li>
+         <li><router-link to="/contact" class="hover-shadow" replace>联系我</router-link></li>
        </ul>
      </div>
   </section>

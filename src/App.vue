@@ -23,6 +23,8 @@ export default {
     .content-container{
       width: 10rem;
       margin: auto;
+      padding: 20px;
+      box-sizing: border-box;
     }
     @media screen and (min-width: 540px) {
       .content-container{

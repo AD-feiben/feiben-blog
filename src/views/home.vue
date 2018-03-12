@@ -1,8 +1,10 @@
 <template lang="html">
   <div id="home">
-    <writing></writing>
+    <writing :list="list"></writing>
     <pagination
       class="pagination"
+      :total="total"
+      :current="current"
       @on-change="pageChange">
     </pagination>
   </div>
@@ -16,10 +18,35 @@ export default {
     Writing,
     Pagination
   },
+  data () {
+    return {
+      total: 0,
+      current: 1,
+      page: 1,
+      list: []
+    }
+  },
   methods: {
     pageChange (val) {
-      console.log(val)
+      this.page = val
+      this.getArticle()
+    },
+    getArticle () {
+      let req = {
+        page: this.page
+      }
+      this.$axiosGeting(this.$api.article, req).then(res => {
+        if (res.code === 200) {
+          this.list = res.data.articles
+          this.total = res.data.total
+        } else {
+          this.$vux.toast.text(res.message)
+        }
+      })
     }
+  },
+  created () {
+    this.getArticle()
   }
 }
 </script>
@@ -27,7 +54,7 @@ export default {
 <style lang="less">
   #home{
     .pagination{
-      margin-bottom: 20px;
+      margin-top: 20px;
     }
   }
 </style>

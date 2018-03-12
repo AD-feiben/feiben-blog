@@ -61,12 +61,15 @@ export default {
 
 <style lang="less">
   @import '~vux/src/styles/close';
+  @import '../styles/var.less';
   #contact{
-    padding: 50px 50px 0;
     text-align: center;
     ul{
       display: flex;
       justify-content: space-around;
+      li{
+        cursor: pointer;
+      }
     }
     a{
       color: #000;
@@ -75,7 +78,8 @@ export default {
       font-size: 20px;
     }
     .introduce{
-      margin: 20px 0;
+      margin-top: 20px;
+      font-size: @fs-10;
     }
     .weui-dialog{
       border-radius: 8px;
