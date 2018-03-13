@@ -22,12 +22,18 @@
 <script>
 import Reward from '@/components/Reward'
 import marked from 'marked'
+import highlight from 'highlight.js'
 export default {
   components: {
     Reward
   },
   computed: {
     htmlContent: function () {
+      marked.setOptions({
+        highlight: function (code) {
+          return highlight.highlightAuto(code).value
+        }
+      })
       return this.content ? marked(this.content) : ''
     }
   },
@@ -130,7 +136,12 @@ export default {
       h6{font-size:.75em; margin:1.67em 0}
       h1,h2,h3,h4,h5,h6,b,strong{font-weight:bolder}
       i,cite,em,var,address{font-style:italic}
-      pre,tt,code,kbd,samp{font-family:monospace}
+      pre,code{
+        color: #abb2bf;
+        background: #292c33;
+        overflow-x: scroll;
+      }
+      // pre,tt,code,kbd,samp{font-family:monospace}
       pre{white-space:pre}
       button,textarea,input,object,select{display:inline-block;}
       big{font-size:1.17em}
