@@ -20,9 +20,9 @@ export default {
   },
   data () {
     return {
-      total: 0,
-      current: 1,
-      page: 1,
+      total: this.$store.state.home.total,
+      current: this.$store.state.home.current,
+      page: this.$store.state.home.current,
       list: []
     }
   },
@@ -32,17 +32,31 @@ export default {
       this.getArticle()
     },
     getArticle () {
-      let req = {
-        page: this.page
-      }
-      this.$axiosGeting(this.$api.article, req).then(res => {
-        if (res.code === 200) {
-          this.list = res.data.articles
-          this.total = res.data.total
-        } else {
-          this.$vux.toast.text(res.message)
+      if (this.$store.state.home.articles[this.page]) {
+        // store 有数据的话直接取store的数据
+        this.list = this.$store.state.home.articles[this.page]
+        this.total = this.$store.state.home.total
+      } else {
+        // store 没有数据再请求接口
+        let req = {
+          page: this.page
         }
-      })
+        this.$axiosGeting(this.$api.article, req).then(res => {
+          if (res.code === 200) {
+            this.list = res.data.articles
+            this.total = res.data.total
+            let data = {
+              articles: {},
+              total: this.total,
+              current: this.page
+            }
+            data.articles[this.page] = this.list
+            this.$store.commit('home/setHomeData', data)
+          } else {
+            this.$vux.toast.text(res.message)
+          }
+        })
+      }
     }
   },
   created () {

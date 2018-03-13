@@ -74,13 +74,18 @@ export default {
     }
   },
   created () {
-    this.$axiosGeting(this.$api.tags).then(res => {
-      if (res.code === 200) {
-        this.tags = res.data.tags
-      } else {
-        this.$vux.load.text(res.message)
-      }
-    })
+    if (this.$store.state.tag.tags.length) {
+      this.tags = this.$store.state.tag.tags
+    } else {
+      this.$axiosGeting(this.$api.tags).then(res => {
+        if (res.code === 200) {
+          this.tags = res.data.tags
+          this.$store.commit('tag/setTagData', this.tags)
+        } else {
+          this.$vux.load.text(res.message)
+        }
+      })
+    }
   }
 }
 </script>

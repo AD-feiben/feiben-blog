@@ -12,6 +12,7 @@ import VueParticles from 'vue-particles'
 import config from './config'
 import '@/api'
 import { ToastPlugin } from 'vux'
+import store from '@/store'
 
 Vue.prototype.$config = config
 Vue.use(VueRouter)
@@ -25,5 +26,6 @@ Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({
   router,
+  store,
   render: h => h(App)
 }).$mount('#app-box')

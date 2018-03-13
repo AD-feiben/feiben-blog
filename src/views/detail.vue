@@ -36,18 +36,32 @@ export default {
     }
   },
   created () {
-    this.$axiosGeting(`${this.$api.article}/${this.$route.params.id}`).then(res => {
-      if (res.code === 200) {
-        this.title = res.data.title
-        this.readingQuantity = res.data.readingQuantity
-        this.content = res.data.content
-        this.tags = res.data.tags
-        this.classify = res.data.classify
-        this.publishedDate = res.data.publishedDate
-      } else {
-        this.$vux.toast.text(res.message)
-      }
-    })
+    let key = this.$route.params.id
+    if (this.$store.state.detail.articles[key]) {
+      let article = this.$store.state.detail.articles[key]
+      this.title = article.title
+      this.readingQuantity = article.readingQuantity
+      this.content = article.content
+      this.tags = article.tags
+      this.classify = article.classify
+      this.publishedDate = article.publishedDate
+    } else {
+      this.$axiosGeting(`${this.$api.article}/${this.$route.params.id}`).then(res => {
+        if (res.code === 200) {
+          this.title = res.data.title
+          this.readingQuantity = res.data.readingQuantity
+          this.content = res.data.content
+          this.tags = res.data.tags
+          this.classify = res.data.classify
+          this.publishedDate = res.data.publishedDate
+          let data = {}
+          data[this.$route.params.id] = res.data
+          this.$store.commit('detail/setDetailData', data)
+        } else {
+          this.$vux.toast.text(res.message)
+        }
+      })
+    }
   },
   mounted () {
     /* eslint-disable */

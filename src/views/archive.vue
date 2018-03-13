@@ -7,7 +7,8 @@
         <li v-for="article in item.articles" :key="article.id">
           <router-link
             :to="{ path: '/detail/' + article._id }"
-            class="title">
+            class="title"
+            replace>
             <span>
               {{article.title}}
             </span>
@@ -31,13 +32,18 @@ export default {
     }
   },
   created () {
-    this.$axiosGeting(this.$api.pigeonhole).then(res => {
-      if (res.code === 200) {
-        this.archives = res.data
-      } else {
-        this.$vux.toast.text(res.text)
-      }
-    })
+    if (this.$store.state.archive.archives.length) {
+      this.archives = this.$store.state.archive.archives
+    } else {
+      this.$axiosGeting(this.$api.pigeonhole).then(res => {
+        if (res.code === 200) {
+          this.archives = res.data
+          this.$store.commit('archive/setArchiveData', this.archives)
+        } else {
+          this.$vux.toast.text(res.text)
+        }
+      })
+    }
   }
 }
 </script>

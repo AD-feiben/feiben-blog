@@ -1,7 +1,7 @@
 <template lang="html">
   <ul id="m-writing">
     <li v-for="item in list" :key="item.id" class="m-writing-item">
-      <router-link :to="{path: `detail/${item._id}`}">
+      <router-link :to="{path: `detail/${item._id}`}" replace>
         <div class="m-writing-text" :class="{noImg: !item.cover}">
           <h3 class="m-writing-title" :title="item.title">
             <span>{{item.title}}</span>

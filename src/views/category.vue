@@ -50,7 +50,10 @@ export default {
   watch: {
     $route: function (newVal) {
       this.selectCategory = newVal.query.category || ''
-      this.selectCategory && this.getArticle()
+      if (this.selectCategory) {
+        this.page = 1
+        this.getArticle()
+      }
     }
   },
   methods: {
@@ -74,13 +77,18 @@ export default {
     }
   },
   created () {
-    this.$axiosGeting(this.$api.classify).then(res => {
-      if (res.code === 200) {
-        this.categories = res.data.classify
-      } else {
-        this.$vux.toast.text(res.message)
-      }
-    })
+    if (this.$store.state.category.categories.length) {
+      this.categories = this.$store.state.category.categories
+    } else {
+      this.$axiosGeting(this.$api.classify).then(res => {
+        if (res.code === 200) {
+          this.categories = res.data.classify
+          this.$store.commit('category/setCategotyData', this.categories)
+        } else {
+          this.$vux.toast.text(res.message)
+        }
+      })
+    }
   }
 }
 </script>
