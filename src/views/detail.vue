@@ -4,7 +4,7 @@
     <p class="desc">
       {{publishedDate}}·<i class="fas fa-folder"></i> {{classify}}·阅读{{readingQuantity}}
     </p>
-    <div class="content" v-html="content"></div>
+    <div class="content" v-html="htmlContent"></div>
     <div class="tags">
       <i class="fas fa-tags"></i>
       <span class="tag-item" v-for="(tag, index) in tags.split(',')" :key="index">{{tag}}</span>
@@ -21,9 +21,15 @@
 
 <script>
 import Reward from '@/components/Reward'
+import marked from 'marked'
 export default {
   components: {
     Reward
+  },
+  computed: {
+    htmlContent: function () {
+      return this.content ? marked(this.content) : ''
+    }
   },
   data () {
     return {
