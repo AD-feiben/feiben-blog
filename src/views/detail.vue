@@ -1,11 +1,11 @@
 <template lang="html">
   <div id="detail">
     <h1 class="title">{{title}}</h1>
-    <p class="desc">
-      {{publishedDate}}·<i class="fas fa-folder"></i> {{classify}}·阅读{{readingQuantity}}
+    <p class="desc" v-if="publishedDate|| classify|| readingQuantity">
+      {{publishedDate}}·<i class="fas fa-folder" v-if="classify"></i> {{classify}}·阅读{{readingQuantity}}
     </p>
     <div class="content" v-html="htmlContent"></div>
-    <div class="tags">
+    <div class="tags" v-if="tags">
       <i class="fas fa-tags"></i>
       <span class="tag-item" v-for="(tag, index) in tags.split(',')" :key="index">{{tag}}</span>
     </div>
