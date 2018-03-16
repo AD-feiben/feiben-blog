@@ -52,7 +52,7 @@ export default {
   #m-writing{
     font-size: @fs-12;
     .m-writing-text{
-      padding-right: 110px;
+      padding-right: 120px;
       min-height: 100px;
       color: @themeColor;
       &.noImg{
@@ -124,8 +124,8 @@ export default {
       position: absolute;
       top: 0;
       right: 0;
-      width: 100px;
-      height: 100px;
+      width: 110px;
+      height: 90px;
       flex-shrink: 0;
       border-radius: 4px;
       object-fit: cover;

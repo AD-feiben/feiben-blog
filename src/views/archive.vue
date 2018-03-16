@@ -40,7 +40,7 @@ export default {
           this.archives = res.data
           this.$store.commit('archive/setArchiveData', this.archives)
         } else {
-          this.$vux.toast.text(res.text)
+          this.$vux.toast.text(res.message)
         }
       })
     }

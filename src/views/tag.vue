@@ -82,7 +82,7 @@ export default {
           this.tags = res.data.tags
           this.$store.commit('tag/setTagData', this.tags)
         } else {
-          this.$vux.load.text(res.message)
+          this.$vux.toast.text(res.message)
         }
       })
     }
