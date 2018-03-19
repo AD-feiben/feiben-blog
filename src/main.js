@@ -2,6 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import 'lib-flexible'
 import Vue from 'vue'
+import 'babel-polyfill'
 import '@/styles/index.less'
 import '@/utils/axios'
 import router from './router'
