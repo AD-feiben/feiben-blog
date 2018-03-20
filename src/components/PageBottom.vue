@@ -58,7 +58,7 @@ export default {
       }
     }
     .record{
-      margin-top: 10px;
+      margin-top: 5px;
       font-size: @fs-10;
     }
   }

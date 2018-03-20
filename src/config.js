@@ -28,7 +28,7 @@ export default {
     }
   ],
   // 网站备案信息
-  record: '粤ICP备17030214号',
+  record: '',
   // 社交账号 -- url
   social: {
     // wechat 为 二维码图片地址
