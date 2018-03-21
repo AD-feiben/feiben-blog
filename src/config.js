@@ -4,7 +4,7 @@ export default {
   // 描述
   description: `If you're going to try, go all the way!`,
   // 头像地址
-  avatar: 'http://upload-images.jianshu.io/upload_images/1917079-e00467bb803b8b26.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240',
+  avatar: 'https://upload-images.jianshu.io/upload_images/1917079-1ec6c3a409c83885.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240',
   // 圆角头像 0%-100%
   avatarRadius: '50%',
   // 头像背景
