@@ -82,7 +82,7 @@ export default {
     } else {
       this.$axiosGeting(this.$api.classify).then(res => {
         if (res.code === 200) {
-          this.categories = res.data.classify
+          this.categories = res.data.classifies
           this.$store.commit('category/setCategotyData', this.categories)
         } else {
           this.$vux.toast.text(res.message)
