@@ -22,8 +22,8 @@
         <i class="fas fa-tags"></i>
         <li
           v-for="(item, index) in tags"
-          :key="index" @click="$router.replace({path:'/tags', query:{tag: item}})"
-          :title="item">{{item}}</li>
+          :key="index" @click="$router.replace({path:'/tags', query:{tag: item.tag}})"
+          :title="item.tag">{{item.tag}}</li>
       </ul>
     </div>
   </div>

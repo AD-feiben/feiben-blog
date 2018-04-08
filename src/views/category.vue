@@ -21,9 +21,9 @@
         <li
           v-for="(item, index) in categories"
           :key="index"
-          @click="$router.replace({path:'/categories', query:{category: item}})">
+          @click="$router.replace({path:'/categories', query:{category: item.classify}})">
           <i class="fas fa-folder"></i>
-          {{item}}</li>
+          {{item.classify}}</li>
       </ul>
     </div>
   </div>
